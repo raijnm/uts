@@ -20,6 +20,7 @@ class Main {
       for(int i = 0; i < x ; i++){
           hg += "0";
       }
+      hg = String.valueOf(sKeI(hg));
     return hg;
   }
 
@@ -46,11 +47,20 @@ class Main {
       int brg2 = cariB(belsew,barang.get(lok).get(0));  
       if(belsew.get(brg2).size() == 2){
         belsew.get(brg2).add("1");
+        String sharga = barang.get(lok).get(0).substring(0,2);
+        int x = sKeI(barang.get(lok).get(0).substring(2,3));
+        sharga = hBarang(sharga,x);
+        //harga item
+        belsew.get(brg2).add(sharga);
+        //harga total item
+        belsew.get(brg2).add(sharga);
       }
+
     }else{
       int brg2 = cariB(belsew,barang.get(lok).get(0));
       int num = sKeI(belsew.get(brg2).get(2)) + 1;
       belsew.get(brg2).set(2,String.valueOf(num));
+      belsew.get(brg2).set(4,String.valueOf(sKeI(belsew.get(brg2).get(2)) * sKeI(belsew.get(brg2).get(3))));
     }
     
     
