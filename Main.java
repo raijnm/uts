@@ -67,13 +67,46 @@ class Main {
 
   }
 
+  public static int diskonBeli(ArrayList<ArrayList<String>> beli){
+      int gTotal = 0;
+      for(int i = 0; i < beli.size(); i++){
+        gTotal += sKeI(beli.get(i).get(4));
+      }
+      ///////
+    //  if(gTotal >= 5000000){
+    //    String kDiskon = 
+    //  }else{
+    //    return gTotal;
+    //  }
+      //////
+      return gTotal;
+  }
+
   public static void printTab(ArrayList<ArrayList<String>> beli){
-    for (int i = 0; i < beli.size(); i++) { 
-        for (int j = 0; j < beli.get(i).size(); j++) { 
-            System.out.print(beli.get(i).get(j) + " "); 
-        } 
+    //start header
+    System.out.print("   Kode -");
+    System.out.print("                 Item -");
+    System.out.print(" Banyak -");
+    System.out.print("           Harga -");
+    System.out.print("           Total");
+    System.out.println();
+    String formatkode = "%7s -";
+    String formatitem = "%21s -";
+    String formatbanyak = "%7s -";
+    String formatharga = "%13s.00 -";
+    String formattotal = "%13s.00";
+    String formatgtotal = "Total transaksi %56s.00";
+    //end of header
+    for (int i = 0; i < beli.size(); i++) {  
+        System.out.format(formatkode,beli.get(i).get(0));
+        System.out.format(formatitem,beli.get(i).get(1));
+        System.out.format(formatbanyak,beli.get(i).get(2));
+        System.out.format(formatharga,beli.get(i).get(3));
+        System.out.format(formattotal,beli.get(i).get(4)); 
         System.out.println(); 
     }
+    System.out.format(formatgtotal, diskonBeli(beli) );
+    System.out.println(); 
   }
 
   public static void main(String[] args) {
@@ -114,34 +147,14 @@ class Main {
 
     ArrayList<ArrayList<String>> belsew = new ArrayList<ArrayList<String>>(10);
     String cari = "215CZP";
-    // int w = barang.size() - 1;
-    // int ketemu = 0;
-    //String sharga = "";
-    // int harga;
 
-    // while(w >= 0 && ketemu == 0){
-    //   if(barang.get(w).get(0) == cari){
-    //       beli.add(barang.get(w));
-    //       ///////////
-    //       sharga = barang.get(w).get(0).substring(0,2);
-    //       int x = sKeI(barang.get(w).get(0).substring(2,3));
-    //       sharga = hBarang(sharga,x);
-    //       System.out.println(sharga);
-    //       //////////
-    //       ketemu = 1;
-    //   }else{
-    //     w--;
-    //   }
-    // }
     int lok = cariB(barang,cari);
     tBelSew(barang,belsew,lok);
     printTab(belsew);
     tBelSew(barang,belsew,lok);
-    System.out.println(lok);
+    //System.out.println(lok);
     lok = cariB(barang,"046AXR");
     tBelSew(barang,belsew,lok);
     printTab(belsew);
-  }
-
-  
+  } 
 }
